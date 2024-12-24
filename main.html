@@ -113,6 +113,25 @@
     .todo-actions .complete:hover {
       background-color: #45a049;
     }
+
+    .daywise-data {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .daywise-data button {
+      padding: 10px 15px;
+      background-color: #2196F3;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .daywise-data button:hover {
+      background-color: #1976D2;
+    }
   </style>
 </head>
 <body>
@@ -123,6 +142,9 @@
       <button onclick="addTodo()">Add</button>
     </div>
     <ul class="todo-list" id="todoList"></ul>
+    <div class="daywise-data">
+      <button onclick="viewDaywiseData()">View Day-wise Data</button>
+    </div>
   </div>
 
   <script>
@@ -141,7 +163,7 @@
         todoItem.className = `todo-item ${todo.completed ? 'completed' : ''}`;
 
         const todoText = document.createElement('span');
-        todoText.textContent = todo.text;
+        todoText.textContent = `${todo.text} (${todo.date})`;
 
         const actions = document.createElement('div');
         actions.className = 'todo-actions';
@@ -174,13 +196,14 @@
     function addTodo() {
       const newTodoInput = document.getElementById('newTodo');
       const newTodoText = newTodoInput.value.trim();
+      const todayDate = new Date().toLocaleDateString();
 
       if (newTodoText === '') {
         alert('Please enter a task.');
         return;
       }
 
-      todos.push({ text: newTodoText, completed: false });
+      todos.push({ text: newTodoText, completed: false, date: todayDate });
       newTodoInput.value = '';
       saveTodos();
       renderTodos();
@@ -207,6 +230,24 @@
         saveTodos();
         renderTodos();
       }
+    }
+
+    function viewDaywiseData() {
+      const daywiseData = todos.reduce((acc, todo) => {
+        acc[todo.date] = acc[todo.date] || [];
+        acc[todo.date].push(todo.text);
+        return acc;
+      }, {});
+
+      let message = 'Day-wise To-Do List:\n';
+      for (const [date, tasks] of Object.entries(daywiseData)) {
+        message += `\n${date}:\n`;
+        tasks.forEach(task => {
+          message += `  - ${task}\n`;
+        });
+      }
+
+      alert(message);
     }
 
     renderTodos();
