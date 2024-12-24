@@ -301,7 +301,7 @@
     function viewDaywiseData() {
       const daywiseData = todos.reduce((acc, todo) => {
         acc[todo.date] = acc[todo.date] || [];
-        acc[todo.date].push(todo.text);
+        acc[todo.date].push(todo);
         return acc;
       }, {});
 
@@ -313,7 +313,7 @@
         const taskList = document.createElement('ul');
         tasks.forEach(task => {
           const taskItem = document.createElement('li');
-          taskItem.textContent = `- ${task}`;
+          taskItem.textContent = `- ${task.text} [${task.completed ? 'Completed' : 'Pending'}]`;
           taskList.appendChild(taskItem);
         });
 
