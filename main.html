@@ -132,6 +132,62 @@
     .daywise-data button:hover {
       background-color: #1976D2;
     }
+
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      width: 300px;
+      padding: 20px;
+      text-align: center;
+      display: none;
+      z-index: 1000;
+    }
+
+    .popup h3 {
+      margin-top: 0;
+      color: #4CAF50;
+    }
+
+    .popup ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .popup ul li {
+      margin: 5px 0;
+      text-align: left;
+    }
+
+    .popup button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #f44336;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .popup button:hover {
+      background-color: #d32f2f;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 999;
+    }
   </style>
 </head>
 <body>
@@ -147,8 +203,18 @@
     </div>
   </div>
 
+  <div class="overlay" id="overlay" onclick="closePopup()"></div>
+  <div class="popup" id="popup">
+    <h3>Day-wise To-Do List</h3>
+    <ul id="daywiseList"></ul>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
   <script>
     const todoList = document.getElementById('todoList');
+    const popup = document.getElementById('popup');
+    const overlay = document.getElementById('overlay');
+    const daywiseList = document.getElementById('daywiseList');
 
     let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
@@ -163,7 +229,7 @@
         todoItem.className = `todo-item ${todo.completed ? 'completed' : ''}`;
 
         const todoText = document.createElement('span');
-        todoText.textContent = `${todo.text} (${todo.date})`;
+        todoText.textContent = todo.text;
 
         const actions = document.createElement('div');
         actions.className = 'todo-actions';
@@ -239,15 +305,29 @@
         return acc;
       }, {});
 
-      let message = 'Day-wise To-Do List:\n';
+      daywiseList.innerHTML = '';
       for (const [date, tasks] of Object.entries(daywiseData)) {
-        message += `\n${date}:\n`;
+        const dateItem = document.createElement('li');
+        dateItem.textContent = date;
+
+        const taskList = document.createElement('ul');
         tasks.forEach(task => {
-          message += `  - ${task}\n`;
+          const taskItem = document.createElement('li');
+          taskItem.textContent = `- ${task}`;
+          taskList.appendChild(taskItem);
         });
+
+        dateItem.appendChild(taskList);
+        daywiseList.appendChild(dateItem);
       }
 
-      alert(message);
+      popup.style.display = 'block';
+      overlay.style.display = 'block';
+    }
+
+    function closePopup() {
+      popup.style.display = 'none';
+      overlay.style.display = 'none';
     }
 
     renderTodos();
