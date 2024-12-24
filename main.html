@@ -128,7 +128,11 @@
   <script>
     const todoList = document.getElementById('todoList');
 
-    let todos = [];
+    let todos = JSON.parse(localStorage.getItem('todos')) || [];
+
+    function saveTodos() {
+      localStorage.setItem('todos', JSON.stringify(todos));
+    }
 
     function renderTodos() {
       todoList.innerHTML = '';
@@ -178,11 +182,13 @@
 
       todos.push({ text: newTodoText, completed: false });
       newTodoInput.value = '';
+      saveTodos();
       renderTodos();
     }
 
     function toggleComplete(index) {
       todos[index].completed = !todos[index].completed;
+      saveTodos();
       renderTodos();
     }
 
@@ -190,6 +196,7 @@
       const newTask = prompt('Edit your task:', todos[index].text);
       if (newTask !== null && newTask.trim() !== '') {
         todos[index].text = newTask.trim();
+        saveTodos();
         renderTodos();
       }
     }
@@ -197,6 +204,7 @@
     function deleteTodo(index) {
       if (confirm('Are you sure you want to delete this task?')) {
         todos.splice(index, 1);
+        saveTodos();
         renderTodos();
       }
     }
