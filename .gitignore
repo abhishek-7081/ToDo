@@ -1,5 +1,5 @@
 # Ignore node_modules directory
-/node_modules
+# /node_modules
 
 # Ignore logs
 *.log
@@ -8,8 +8,7 @@
 .env
 
 # Ignore build output
-/dist
-/build
+ /dist
 
 # Ignore OS-specific files
 .DS_Store
