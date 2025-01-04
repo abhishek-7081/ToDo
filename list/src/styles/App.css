@@ -1,0 +1,188 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #4CAF50;
+  }
+
+  .todo-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 20px;
+  }
+
+  .todo-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .todo-header input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+
+  .todo-header button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .todo-header button:hover {
+    background-color: #45a049;
+  }
+
+  .todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .todo-item:last-child {
+    border-bottom: none;
+  }
+
+  .todo-item.completed span {
+    text-decoration: line-through;
+    color: #888;
+  }
+
+  .todo-actions button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .todo-actions .edit {
+    background-color: #ffc107;
+    color: #fff;
+  }
+
+  .todo-actions .edit:hover {
+    background-color: #e0a800;
+  }
+
+  .todo-actions .delete {
+    background-color: #f44336;
+    color: #fff;
+  }
+
+  .todo-actions .delete:hover {
+    background-color: #d32f2f;
+  }
+
+  .todo-actions .complete {
+    background-color: #4CAF50;
+    color: #fff;
+  }
+
+  .todo-actions .complete:hover {
+    background-color: #45a049;
+  }
+
+  .daywise-data {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .daywise-data button {
+    padding: 10px 15px;
+    background-color: #2196F3;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .daywise-data button:hover {
+    background-color: #1976D2;
+  }
+
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    display: none;
+    z-index: 1000;
+  }
+
+  .popup h3 {
+    margin-top: 0;
+    color: #4CAF50;
+  }
+
+  .popup ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .popup ul li {
+    margin: 5px 0;
+    text-align: left;
+  }
+
+  .popup button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #f44336;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .popup button:hover {
+    background-color: #d32f2f;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+  }
+
+
+
+
+  
