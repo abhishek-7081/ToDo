@@ -43,7 +43,7 @@ const TodoList = ({ todos, toggleComplete, editTodo, deleteTodo }) => {
     <div className="todo-list-container">
       {/* Button to toggle theme */}
       <button onClick={toggleTheme} className="theme-toggle-btn">
-        Change Popup Theme
+        Change Theme
       </button>
 
       {/* Render Todo Items */}

@@ -257,6 +257,7 @@ body {
     max-width: 400px;
     width: 90%;
     color: black; /* Default text color */
+    z-index: 999999999999999999999999;
   }
   
   .popup ul {
@@ -274,6 +275,46 @@ body {
   
   .popup[style*="background-color: gray"] {
     color: black; /* Text color for gray theme */
+  }
+  
+  
+
+
+
+
+  /* Light mode styles */
+.light-mode {
+    background-color: #f4f6f9;
+    color: #333;
+  }
+  
+  .light-mode .navbar {
+    background-color: #f8f9fa;
+  }
+  
+  .light-mode .footer {
+    background-color: #f8f9fa;
+    color: #333;
+  }
+  
+  /* Dark mode styles */
+  .dark-mode {
+    background-color: #121212;
+    color: white;
+  }
+  
+  .dark-mode .navbar {
+    background-color: #343a40;
+  }
+  
+  .dark-mode .footer {
+    background-color: #343a40;
+    color: white;
+  }
+  
+  /* Theme button styles */
+  button {
+    transition: background-color 0.3s ease;
   }
   
   

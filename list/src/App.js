@@ -64,9 +64,9 @@ const App = () => {
           editTodo={editTodo}
           deleteTodo={deleteTodo}
         />
-        <div className="daywise-data">
+        {/* <div className="daywise-data">
           <button onClick={viewDaywiseData}>View Day-wise Data</button>
-        </div>
+        </div> */}
       </div>
       {showPopup && <Popup daywiseData={daywiseData} closePopup={closePopup} />}
     </div>
