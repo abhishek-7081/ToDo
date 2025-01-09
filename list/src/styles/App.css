@@ -1,320 +1,232 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 20px;
-  }
-
-  h1 {
-    text-align: center;
-    color: #4CAF50;
-  }
-
-  .todo-container {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    padding: 20px;
-  }
-
-  .todo-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-
-  .todo-header input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 10px;
-  }
-
-  .todo-header button {
-    padding: 10px 15px;
-    background-color: #4CAF50;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  .todo-header button:hover {
-    background-color: #45a049;
-  }
-
-  .todo-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .todo-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-
-  .todo-item:last-child {
-    border-bottom: none;
-  }
-
-  .todo-item.completed span {
-    text-decoration: line-through;
-    color: #888;
-  }
-
-  .todo-actions button {
-    margin-left: 5px;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  .todo-actions .edit {
-    background-color: #ffc107;
-    color: #fff;
-  }
-
-  .todo-actions .edit:hover {
-    background-color: #e0a800;
-  }
-
-  .todo-actions .delete {
-    background-color: #f44336;
-    color: #fff;
-  }
-
-  .todo-actions .delete:hover {
-    background-color: #d32f2f;
-  }
-
-  .todo-actions .complete {
-    background-color: #4CAF50;
-    color: #fff;
-  }
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #4CAF50;
+}
+
+.todo-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.todo-header input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.todo-header button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.todo-header button:hover {
+  background-color: #45a049;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.todo-item.completed span {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.todo-actions button {
+  margin-left: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.todo-actions .edit {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+.todo-actions .edit:hover {
+  background-color: #e0a800;
+}
+
+.todo-actions .delete {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.todo-actions .delete:hover {
+  background-color: #d32f2f;
+}
+
+.todo-actions .complete {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+.todo-actions .complete:hover {
+  background-color: #45a049;
+}
+
+.daywise-data {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.daywise-data button {
+  padding: 10px 15px;
+  background-color: #2196F3;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.daywise-data button:hover {
+  background-color: #1976D2;
+}
+
+.popup,
+.overlay {
+  display: none;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+  z-index: 1000;
+}
+
+.popup h3 {
+  margin-top: 0;
+  color: #4CAF50;
+}
+
+.popup ul {
+  list-style: none;
+  padding: 0;
+}
+
+.popup ul li {
+  margin: 5px 0;
+  text-align: left;
+}
+
+.popup button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #f44336;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.popup button:hover {
+  background-color: #d32f2f;
+}
+
+.popup[style*="background-color: black"] {
+  color: white;
+}
+
+.popup[style*="background-color: gray"] {
+  color: black;
+}
 
-  .todo-actions .complete:hover {
-    background-color: #45a049;
-  }
-
-  .daywise-data {
-    margin-top: 20px;
-    text-align: center;
-  }
-
-  .daywise-data button {
-    padding: 10px 15px;
-    background-color: #2196F3;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  .daywise-data button:hover {
-    background-color: #1976D2;
-  }
-
-  .popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    width: 300px;
-    padding: 20px;
-    text-align: center;
-    display: none;
-    z-index: 1000;
-  }
-
-  .popup h3 {
-    margin-top: 0;
-    color: #4CAF50;
-  }
-
-  .popup ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .popup ul li {
-    margin: 5px 0;
-    text-align: left;
-  }
-
-  .popup button {
-    margin-top: 10px;
-    padding: 10px 15px;
-    background-color: #f44336;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  .popup button:hover {
-    background-color: #d32f2f;
-  }
-
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-    z-index: 999;
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  .todo-list-container {
-    text-align: center;
-    margin: 20px;
-  }
-  
-  .theme-toggle-btn,
-  .view-daywise-btn,
-  .close-popup-btn {
-    padding: 10px 20px;
-    margin: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .theme-toggle-btn:hover,
-  .view-daywise-btn:hover,
-  .close-popup-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  .popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .popup {
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    max-width: 400px;
-    width: 90%;
-    color: black; /* Default text color */
-    z-index: 999999999999999999999999;
-  }
-  
-  .popup ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .popup ul li {
-    margin-bottom: 10px;
-  }
-  
-  .popup[style*="background-color: black"] {
-    color: white; /* Text color for black theme */
-  }
-  
-  .popup[style*="background-color: gray"] {
-    color: black; /* Text color for gray theme */
-  }
-  
-  
-
-
-
-
-  /* Light mode styles */
 .light-mode {
-    background-color: #f4f6f9;
-    color: #333;
-  }
-  
-  .light-mode .navbar {
-    background-color: #f8f9fa;
-  }
-  
-  .light-mode .footer {
-    background-color: #f8f9fa;
-    color: #333;
-  }
-  
-  /* Dark mode styles */
-  .dark-mode {
-    background-color: #121212;
-    color: white;
-  }
-  
-  .dark-mode .navbar {
-    background-color: #343a40;
-  }
-  
-  .dark-mode .footer {
-    background-color: #343a40;
-    color: white;
-  }
-  
-  /* Theme button styles */
-  button {
-    transition: background-color 0.3s ease;
-  }
-  
-  
+  background-color: #f4f6f9;
+  color: #333;
+}
+
+.light-mode .navbar,
+.light-mode .footer {
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+.dark-mode .navbar,
+.dark-mode .footer {
+  background-color: #343a40;
+  color: white;
+}
+
+button {
+  transition: background-color 0.3s ease;
+}
+
+.todo-list-container {
+  text-align: center;
+  margin: 20px;
+}
+
+.theme-toggle-btn,
+.view-daywise-btn,
+.close-popup-btn {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.theme-toggle-btn:hover,
+.view-daywise-btn:hover,
+.close-popup-btn:hover {
+  background-color: #0056b3;
+}
